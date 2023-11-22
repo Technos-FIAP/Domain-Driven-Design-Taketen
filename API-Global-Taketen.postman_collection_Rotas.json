@@ -1,0 +1,718 @@
+{
+	"info": {
+		"_postman_id": "3edcad1f-7bf9-4869-af4a-39c0cb50bd1c",
+		"name": "API-Global-Taketen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23459166"
+	},
+	"item": [
+		{
+			"name": "TipoExercicio",
+			"item": [
+				{
+					"name": "ListaTipoExercicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/tipoExercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "InsertTipoExercicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTipoExercicio\" : 3,\r\n    \"numeroTipoExercicio\" : \"TesteInsert\",\r\n    \"descricaoTipoExercicio\" : \"TestandoInsert\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/tipoExercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTipoExercicio",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idTipoExercicio\": 3,\r\n    \"numeroTipoExercicio\" : \"Teste Updateeeeeee\",\r\n    \"descricaoTipoExercicio\" : \"Testando Update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/tipoExercicio/3"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTipoExercicio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/tipoExercicio/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Equipe",
+			"item": [
+				{
+					"name": "Lista Equipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/equipe"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Equipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idEquipe\": 2,\r\n        \"numeroEquipe\": \"Equipe Teste\",\r\n        \"dataFormacao\": \"29/01/2005\",\r\n        \"numeroTotalMembro\": 10,\r\n        \"numeroPontuacao\": 100,\r\n        \"descricaoObjetivoEquipe\": \"Objetivo da Equipe Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/equipe"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Equipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"idEquipe\": 2,\r\n        \"numeroEquipe\": \"Equipe Update\",\r\n        \"dataFormacao\": \"29/01/2005\",\r\n        \"numeroTotalMembro\": 10,\r\n        \"numeroPontuacao\": 100,\r\n        \"descricaoObjetivoEquipe\": \"Objetivo da Equipe Update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/equipe/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Equipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/equipe/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desafio",
+			"item": [
+				{
+					"name": "Lista Desafio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desafio"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Desafio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idDesafio\": 2,\r\n    \"numeroDesafio\": \"Desafio Insert\",\r\n    \"descricaoDesafio\": \"Descrição do Desafio Insert\",\r\n    \"numeroNivelDificuldade\": 2,\r\n    \"dataInicio\": \"01/02/2023\",\r\n    \"dataFinal\": \"28/02/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desafio"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Desafio",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idDesafio\": 2,\r\n    \"numeroDesafio\": \"Desafio Update\",\r\n    \"descricaoDesafio\": \"Descrição do Desafio Update\",\r\n    \"numeroNivelDificuldade\": 2,\r\n    \"dataInicio\": \"01/02/2023\",\r\n    \"dataFinal\": \"28/02/2023\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desafio/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Desafio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desafio/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Exercicio",
+			"item": [
+				{
+					"name": "Lista Exercicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/exercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Exercicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idExercicio\": 2,\r\n    \"numeroExercicio\": \"Teste\",\r\n    \"descricaoExercicio\": \"Testando Insert\",\r\n    \"urlVideoDemonstracao\": \"https://www.Teste.com\",\r\n    \"descricaoDificuldade\": \"Fácil\",\r\n    \"numeroSeriesRecomendado\": 3,\r\n    \"numeroRepeticoesRecomendado\": 15,\r\n    \"descricaoBeneficios\": \"Melhora cardiovascular\",\r\n    \"numeroTempoExecucao\": 20.0,\r\n    \"idTipoExercicio\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/exercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Exercicio",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idExercicio\": 2,\r\n    \"numeroExercicio\": \"Teste\",\r\n    \"descricaoExercicio\": \"Testando Update\",\r\n    \"urlVideoDemonstracao\": \"https://www.Teste.com\",\r\n    \"descricaoDificuldade\": \"Fácil\",\r\n    \"numeroSeriesRecomendado\": 3,\r\n    \"numeroRepeticoesRecomendado\": 15,\r\n    \"descricaoBeneficios\": \"Melhora cardiovascular\",\r\n    \"numeroTempoExecucao\": 20.0,\r\n    \"idTipoExercicio\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/exercicio/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Exercicio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/exercicio/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Lista Usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"numeroUsuario\": \"UsuarioTesteInsert\",\r\n    \"descricaoEmail\": \"UsuarioTesteInsert@email.com\",\r\n    \"descricaoSenha\": \"754735742345734\",\r\n    \"dataNascimento\": \"01/01/1999\",\r\n    \"numeroAltura\": 1.75,\r\n    \"numeroPeso\": 70.0,\r\n    \"descricaoSexo\": \"M\",\r\n    \"idEquipe\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idUsuario\": 2,\r\n    \"numeroUsuario\": \"UsuarioTesteUpdate\",\r\n    \"descricaoEmail\": \"UsuarioTesteInsert@email.com\",\r\n    \"descricaoSenha\": \"754735742345734\",\r\n    \"dataNascimento\": \"01/01/1999\",\r\n    \"numeroAltura\": 1.75,\r\n    \"numeroPeso\": 70.0,\r\n    \"descricaoSexo\": \"M\",\r\n    \"idEquipe\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chatbot",
+			"item": [
+				{
+					"name": "Lista Chatbot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/chatbot"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Chatbot",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idChatbot\": 2,\r\n    \"textoEntrada\": \"Oi Teste\",\r\n    \"textoSaida\": \"Olá! Como posso ajudar?\",\r\n    \"dataMensagem\": \"01/03/2021\",\r\n    \"descricaoIntencao\": \"Saudacao\",\r\n    \"idUsuario\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/chatbot"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Chatbot",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idChatbot\": 2,\r\n    \"textoEntrada\": \"Oi Update\",\r\n    \"textoSaida\": \"Olá! Como posso ajudar?\",\r\n    \"dataMensagem\": \"01/03/2021\",\r\n    \"descricaoIntencao\": \"Saudacao\",\r\n    \"idUsuario\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/chatbot/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chatbot",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/chatbot/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HistoricoSaude",
+			"item": [
+				{
+					"name": "Lista HistoricoSaude",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/historicoSaude"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert HistoricoSaude",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idHistoricoSaude\": 2,\r\n    \"idUsuario\": 1,\r\n    \"dataRegistro\": \"15/03/2023\",\r\n    \"descricaoEstresse\": \"Baixo\",\r\n    \"descricaoPostura\": \"Boa\",\r\n    \"numeroHorasSedentarias\": 3.0,\r\n    \"descricaoLesoes\": \"Nenhuma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/historicoSaude"
+					},
+					"response": []
+				},
+				{
+					"name": "Update HistoricoSaude",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idHistoricoSaude\": 2,\r\n    \"idUsuario\": 1,\r\n    \"dataRegistro\": \"15/03/2023\",\r\n    \"descricaoEstresse\": \"Baixo\",\r\n    \"descricaoPostura\": \"Teste Update\",\r\n    \"numeroHorasSedentarias\": 3.0,\r\n    \"descricaoLesoes\": \"Nenhuma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/historicoSaude/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete HistoricoSaude",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/historicoSaude/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profissao",
+			"item": [
+				{
+					"name": "Lista Profissao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/profissao"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Profissao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idProfissao\": 2,\r\n    \"idUsuario\": 1,\r\n    \"descricaoProfissao\": \"Teste Insert\",\r\n    \"descricaoNivelAtividadeFisica\": \"Ativo\",\r\n    \"descricaoEstresseOcupacional\": \"Baixo\",\r\n    \"numeroFrequenciaPausaAtiva\": 0.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/profissao"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profissao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idProfissao\": 2,\r\n    \"idUsuario\": 1,\r\n    \"descricaoProfissao\": \"Teste Update\",\r\n    \"descricaoNivelAtividadeFisica\": \"Ativo\",\r\n    \"descricaoEstresseOcupacional\": \"Baixo\",\r\n    \"numeroFrequenciaPausaAtiva\": 0.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/profissao/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profissao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/profissao/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SessaoGinastica",
+			"item": [
+				{
+					"name": "Lista SessaoGinastica",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinastica"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert SessaoGinastica",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSessaoGinastica\": 2,\r\n    \"idUsuario\": 1,\r\n    \"dataSessao\": \"21/02/2000\",\r\n    \"numeroDuracao\": 30.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinastica"
+					},
+					"response": []
+				},
+				{
+					"name": "Update SessaoGinastica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSessaoGinastica\": 2,\r\n    \"idUsuario\": 1,\r\n    \"dataSessao\": \"21/02/2021\",\r\n    \"numeroDuracao\": 30.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinastica/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SessaoGinastica",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinastica/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SessaoGinasticaExercicio",
+			"item": [
+				{
+					"name": "Lista SessaoGinasticaExercicio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinasticaExercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert SessaoGinasticaExercicio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSessaoGinasticaExercicio\": 2,\r\n    \"idExercicio\": 1,\r\n    \"idSessaoGinastica\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinasticaExercicio"
+					},
+					"response": []
+				},
+				{
+					"name": "Update SessaoGinasticaExercicio",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idSessaoGinasticaExercicio\": 2,\r\n    \"idExercicio\": 2,\r\n    \"idSessaoGinastica\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinasticaExercicio/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete SessaoGinasticaExercicio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/sessaoGinasticaExercicio/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conquista",
+			"item": [
+				{
+					"name": "Lista Conquista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/conquista"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Conquista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idConquista\": 2,\r\n    \"idSessaoGinastica\": 1,\r\n    \"idDesafio\": 1,\r\n    \"numeroPontuacaoConquista\": 50,\r\n    \"descricaoConquista\": \"Conquista Teste Insert\",\r\n    \"numeroConquista\": \"Conquista Realizada\",\r\n    \"descricaoTipoConquista\": \"Diária\",\r\n    \"numeroProgressoAtual\": 30.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/conquista"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Conquista",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idConquista\": 2,\r\n    \"idSessaoGinastica\": 1,\r\n    \"idDesafio\": 1,\r\n    \"numeroPontuacaoConquista\": 50,\r\n    \"descricaoConquista\": \"Conquista Teste Update\",\r\n    \"numeroConquista\": \"Conquista Realizada\",\r\n    \"descricaoTipoConquista\": \"Diária\",\r\n    \"numeroProgressoAtual\": 30.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/conquista/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Conquista",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/conquista/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desempenho",
+			"item": [
+				{
+					"name": "Lista Desempenho",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desempenho"
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Desempenho",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idDesempenho\": 2,\r\n    \"idSessaoGinastica\": 1,\r\n    \"descricaoFeedback\": \"Bom desempenho! Teste Insert\",\r\n    \"numeroIntensidade\": 8,\r\n    \"numeroNivelFlexibilidade\": 7,\r\n    \"numeroRendimentoGeral\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desempenho"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Desempenho",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idDesempenho\": 2,\r\n    \"idSessaoGinastica\": 1,\r\n    \"descricaoFeedback\": \"Bom desempenho! Teste Update\",\r\n    \"numeroIntensidade\": 8,\r\n    \"numeroNivelFlexibilidade\": 7,\r\n    \"numeroRendimentoGeral\": 9\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desempenho/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Desempenho",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/desempenho/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
