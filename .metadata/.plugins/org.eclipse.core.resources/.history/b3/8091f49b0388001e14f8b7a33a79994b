@@ -1,0 +1,76 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.SessaoGinasticaExercicio;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class SessaoGinasticaExercicioDAO {
+
+	public Connection minhaConexao;
+
+	public SessaoGinasticaExercicioDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(SessaoGinasticaExercicio sessaoGinasticaExercicio) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?)");
+		stmt.setInt(1, sessaoGinasticaExercicio.getIdChatbot());
+		stmt.setInt(2, sessaoGinasticaExercicio.getIdUsuario());
+		stmt.setInt(3, sessaoGinasticaExercicio.getIdUsuario());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(SessaoGinasticaExercicio chatbot) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, coluna = ?, coluna = ?, coluna = ? where ID = ?");
+		stmt.setInt(1, chatbot.getIdUsuario());
+		stmt.setString(2, chatbot.getTextoEntrada());
+		stmt.setString(3, chatbot.getTextoSaida());
+		stmt.setString(4, chatbot.getDataMensagem());
+		stmt.setString(5, chatbot.getDescricaoIntencao());
+		stmt.setInt(6, chatbot.getIdChatbot());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<SessaoGinasticaExercicio> selecionar() throws SQLException {
+		List<SessaoGinasticaExercicio> listaChatbot = new ArrayList<SessaoGinasticaExercicio>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			SessaoGinasticaExercicio chatbot = new SessaoGinasticaExercicio();
+			chatbot.setIdChatbot(rs.getInt(1));
+			chatbot.setIdUsuario(rs.getInt(2));
+			chatbot.setTextoEntrada(rs.getString(3));
+			chatbot.setTextoSaida(rs.getString(4));
+			chatbot.setDataMensagem(rs.getString(5));
+			chatbot.setDescricaoIntencao(rs.getString(6));
+			listaChatbot.add(chatbot);
+		}
+		return listaChatbot;
+	}
+}

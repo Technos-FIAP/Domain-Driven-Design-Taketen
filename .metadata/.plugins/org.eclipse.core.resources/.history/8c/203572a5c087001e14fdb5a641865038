@@ -1,0 +1,75 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.TipoExercicio;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class TipoExercicioDAO {
+
+	public Connection minhaConexao;
+
+	public TipoExercicioDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(TipoExercicio tipoExercicio) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?)");
+		stmt.setInt(1, tipoExercicio.getIdTipoExercicio());
+		stmt.setString(2, tipoExercicio.getNumeroTipoExercicio());
+		stmt.setString(3, tipoExercicio.getDescricaoTipoExercicio());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(TipoExercicio equipe) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, " 
+						+ "  coluna = ?, coluna = ?where ID = ?");
+		stmt.setString(1, equipe.getNumeroEquipe());
+		stmt.setString(2, equipe.getDataFormacao());
+		stmt.setInt(3, equipe.getNumeroTotalMembro());
+		stmt.setString(4, equipe.getNumeroPontuacao());
+		stmt.setInt(5, equipe.getIdEquipe());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<TipoExercicio> selecionar() throws SQLException {
+		List<TipoExercicio> listaEquipe = new ArrayList<TipoExercicio>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			TipoExercicio equipe = new TipoExercicio();
+			equipe.setIdEquipe(rs.getInt(1));
+			equipe.setNumeroEquipe(rs.getString(2));
+			equipe.setDataFormacao(rs.getString(3));
+			equipe.setNumeroTotalMembro(rs.getInt(4));
+			equipe.setNumeroPontuacao(rs.getString(5));
+			listaEquipe.add(equipe);
+		}
+		return listaEquipe;
+	}
+}

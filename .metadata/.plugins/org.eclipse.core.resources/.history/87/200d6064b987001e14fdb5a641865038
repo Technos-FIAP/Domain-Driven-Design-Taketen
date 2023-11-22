@@ -1,0 +1,77 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Desafio;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class DesafioDAO {
+
+	public Connection minhaConexao;
+
+	public DesafioDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Desafio desafio) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, desafio.getIdDesafio());
+		stmt.setString(2, desafio.getNumeroDesafio());
+		stmt.setString(3, desafio.getDescricaoDesafio());
+		stmt.setInt(4, desafio.getNumeroNivelDificuldade());
+		stmt.setString(5, desafio.getDataInicio());
+		stmt.setString(6, desafio.getDataFinal());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Desafio desafio) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set NOME = ?, TURMA = ?, " + "  NOTA = ? where ID = ?");
+		stmt.setString(1, desafio.getNumeroDesafio());
+		stmt.setString(2, desafio.getDescricaoDesafio());
+		stmt.setInt(3, desafio.getNumeroNivelDificuldade());
+		stmt.setString(4, desafio.getDataInicio());
+		stmt.setString(5, desafio.getDataFinal());
+		stmt.setInt(6, desafio.getIdDesafio());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Desafio> selecionar() throws SQLException {
+		List<Desafio> listaAluno = new ArrayList<Desafio>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM T_FIAP_ALUNO");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Desafio desafio = new Desafio();
+			desafio.setRm(rs.getInt(1));
+			desafio.setNome(rs.getString(2));
+			desafio.setTurma(rs.getString(3));
+			desafio.setNota(rs.getDouble(4));
+			listaAluno.add(desafio);
+		}
+		return listaAluno;
+	}
+}

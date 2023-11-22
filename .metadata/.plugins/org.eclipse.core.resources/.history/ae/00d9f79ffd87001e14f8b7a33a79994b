@@ -1,0 +1,79 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Profissao;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class ProfissaoDAO {
+
+	public Connection minhaConexao;
+
+	public ProfissaoDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Profissao profissao) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, profissao.getIdProfissao());
+		stmt.setInt(2, profissao.getIdUsuario());
+		stmt.setString(3, profissao.getDescricaoProfissao());
+		stmt.setString(4, profissao.getDescricaoNivelAtividadeFisica());
+		stmt.setString(5, profissao.getDescricaoEstresseOcupacional());
+		stmt.setDouble(6, profissao.getNumeroFrequenciaPausaAtiva());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Profissao profissao) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, coluna = ?, coluna = ?, coluna = ? where ID = ?");
+		stmt.setInt(2, profissao.getIdUsuario());
+		stmt.setString(3, profissao.getDescricaoProfissao());
+		stmt.setString(4, profissao.getDescricaoNivelAtividadeFisica());
+		stmt.setString(5, profissao.getDescricaoEstresseOcupacional());
+		stmt.setDouble(6, profissao.getNumeroFrequenciaPausaAtiva());
+		stmt.setInt(1, profissao.getIdProfissao());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Profissao> selecionar() throws SQLException {
+		List<Profissao> listaProfissao = new ArrayList<Profissao>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Profissao chatbot = new Profissao();
+			chatbot.setIdChatbot(rs.getInt(1));
+			chatbot.setIdUsuario(rs.getInt(2));
+			chatbot.setTextoEntrada(rs.getString(3));
+			chatbot.setTextoSaida(rs.getString(4));
+			chatbot.setDataMensagem(rs.getString(5));
+			chatbot.setDescricaoIntencao(rs.getString(6));
+			listaProfissao.add(chatbot);
+		}
+		return listaProfissao;
+	}
+}

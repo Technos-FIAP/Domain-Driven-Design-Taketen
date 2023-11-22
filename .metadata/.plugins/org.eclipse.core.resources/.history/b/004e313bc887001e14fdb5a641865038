@@ -1,0 +1,78 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Chatbot;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class ChatbotDAO {
+
+	public Connection minhaConexao;
+
+	public ChatbotDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Chatbot chatbot) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, chatbot.getIdChatbot());
+		stmt.setInt(2, chatbot.getIdUsuario());
+		stmt.setString(3, chatbot.getTextoEntrada());
+		stmt.setString(4, chatbot.getTextoSaida());
+		stmt.setString(5, chatbot.getDataMensagem());
+		stmt.setString(6, chatbot.getDescricaoIntencao());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Chatbot chatbot) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, coluna = ?, coluna = ?, coluna = ? where ID = ?");
+		stmt.setInt(1, chatbot.getIdUsuario());
+		stmt.setString(2, chatbot.getTextoEntrada());
+		stmt.setString(3, chatbot.getTextoSaida());
+		stmt.setString(4, chatbot.getDataMensagem());
+		stmt.setString(5, chatbot.getDescricaoIntencao());
+		stmt.setInt(6, chatbot.getIdChatbot());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Chatbot> selecionar() throws SQLException {
+		List<Chatbot> listaChatbot = new ArrayList<Chatbot>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Chatbot equipe = new Chatbot();
+			equipe.setIdEquipe(rs.getInt(1));
+			equipe.setNumeroEquipe(rs.getString(2));
+			equipe.setDataFormacao(rs.getString(3));
+			equipe.setNumeroTotalMembro(rs.getInt(4));
+			equipe.setNumeroPontuacao(rs.getString(5));
+			listaChatbot.add(equipe);
+		}
+		return listaChatbot;
+	}
+}

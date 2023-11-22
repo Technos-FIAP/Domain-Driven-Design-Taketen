@@ -1,0 +1,63 @@
+package br.com.taketen.beans;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Equipe {
+	
+	private int idEquipe;
+	private String numeroEquipe, dataFormacao;
+	private int numeroTotalMembro, numeroPontuacao;
+	private String descricaoObjetivoEquipe;
+	public Equipe() {
+		super();
+	}
+	public Equipe(int idEquipe, String numeroEquipe, String dataFormacao, int numeroTotalMembro, int numeroPontuacao,
+			String descricaoObjetivoEquipe) {
+		super();
+		this.idEquipe = idEquipe;
+		this.numeroEquipe = numeroEquipe;
+		this.dataFormacao = dataFormacao;
+		this.numeroTotalMembro = numeroTotalMembro;
+		this.numeroPontuacao = numeroPontuacao;
+		this.descricaoObjetivoEquipe = descricaoObjetivoEquipe;
+	}
+	public int getIdEquipe() {
+		return idEquipe;
+	}
+	public String getNumeroEquipe() {
+		return numeroEquipe;
+	}
+	public String getDataFormacao() {
+		return dataFormacao;
+	}
+	public int getNumeroTotalMembro() {
+		return numeroTotalMembro;
+	}
+	public int getNumeroPontuacao() {
+		return numeroPontuacao;
+	}
+	public String getDescricaoObjetivoEquipe() {
+		return descricaoObjetivoEquipe;
+	}
+	public void setIdEquipe(int idEquipe) {
+		this.idEquipe = idEquipe;
+	}
+	public void setNumeroEquipe(String numeroEquipe) {
+		this.numeroEquipe = numeroEquipe;
+	}
+	public void setDataFormacao(String dataFormacao) {
+		this.dataFormacao = dataFormacao;
+	}
+	public void setNumeroTotalMembro(int numeroTotalMembro) {
+		this.numeroTotalMembro = numeroTotalMembro;
+	}
+	public void setNumeroPontuacao(int numeroPontuacao) {
+		this.numeroPontuacao = numeroPontuacao;
+	}
+	public void setDescricaoObjetivoEquipe(String descricaoObjetivoEquipe) {
+		this.descricaoObjetivoEquipe = descricaoObjetivoEquipe;
+	}
+	
+	
+}

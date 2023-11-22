@@ -1,0 +1,77 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Equipe;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class ChatbotDAO {
+
+	public Connection minhaConexao;
+
+	public EquipeDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Equipe equipe) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?)");
+		stmt.setInt(1, equipe.getIdEquipe());
+		stmt.setString(2, equipe.getNumeroEquipe());
+		stmt.setString(3, equipe.getDataFormacao());
+		stmt.setInt(4, equipe.getNumeroTotalMembro());
+		stmt.setString(5, equipe.getNumeroPontuacao());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Equipe equipe) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, " 
+						+ "  coluna = ?, coluna = ? where ID = ?");
+		stmt.setString(1, equipe.getNumeroEquipe());
+		stmt.setString(2, equipe.getDataFormacao());
+		stmt.setInt(3, equipe.getNumeroTotalMembro());
+		stmt.setString(4, equipe.getNumeroPontuacao());
+		stmt.setInt(5, equipe.getIdEquipe());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Equipe> selecionar() throws SQLException {
+		List<Equipe> listaEquipe = new ArrayList<Equipe>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Equipe equipe = new Equipe();
+			equipe.setIdEquipe(rs.getInt(1));
+			equipe.setNumeroEquipe(rs.getString(2));
+			equipe.setDataFormacao(rs.getString(3));
+			equipe.setNumeroTotalMembro(rs.getInt(4));
+			equipe.setNumeroPontuacao(rs.getString(5));
+			listaEquipe.add(equipe);
+		}
+		return listaEquipe;
+	}
+}

@@ -1,0 +1,8 @@
+package br.com.taketen.beans;
+
+public class TipoExercicio {
+
+	private int idTipoExercicio;
+	private String numeroTipoExercicio, descricaoTipoExercicio;
+	
+}

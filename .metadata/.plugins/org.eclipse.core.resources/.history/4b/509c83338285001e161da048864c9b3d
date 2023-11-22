@@ -1,0 +1,9 @@
+package br.com.taketen.beans;
+
+public class Conquista {
+
+	private int idConquista, idSessaoGinastica, idDesafio, numeroPontuacaoConquista;
+	private String descricaoConquista, numeroConquista, descricaoTipoConquista;
+	private double numeroProgressoAtual;
+	
+}

@@ -1,0 +1,81 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Usuario;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class UsuarioDAO {
+
+	public Connection minhaConexao;
+
+	public UsuarioDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Usuario usuario) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, usuario.getIdUsuario());
+		stmt.setString(2, usuario.getNumeroUsuario());
+		stmt.setString(3, usuario.getDescricaoEmail());
+		stmt.setString(4, usuario.getDescricaoSenha());
+		stmt.setString(5, usuario.getDataNascimento());
+		stmt.setDouble(6, usuario.getNumeroAltura());
+		stmt.setDouble(7, usuario.getNumeroPeso());
+		stmt.setString(8, usuario.getDescricaoGenero());
+		stmt.setInt(9, usuario.getIdEquipe());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Usuario equipe) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, " 
+						+ "  coluna = ?, coluna = ? where ID = ?");
+		stmt.setString(1, equipe.getNumeroEquipe());
+		stmt.setString(2, equipe.getDataFormacao());
+		stmt.setInt(3, equipe.getNumeroTotalMembro());
+		stmt.setString(4, equipe.getNumeroPontuacao());
+		stmt.setInt(5, equipe.getIdEquipe());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Usuario> selecionar() throws SQLException {
+		List<Usuario> listaEquipe = new ArrayList<Usuario>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Usuario equipe = new Usuario();
+			equipe.setIdEquipe(rs.getInt(1));
+			equipe.setNumeroEquipe(rs.getString(2));
+			equipe.setDataFormacao(rs.getString(3));
+			equipe.setNumeroTotalMembro(rs.getInt(4));
+			equipe.setNumeroPontuacao(rs.getString(5));
+			listaEquipe.add(equipe);
+		}
+		return listaEquipe;
+	}
+}

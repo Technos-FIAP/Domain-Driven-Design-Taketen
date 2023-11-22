@@ -1,0 +1,34 @@
+package br.com.taketen.bo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.taketen.beans.Chatbot;
+import br.com.taketen.dao.SessaoGinasticaDAO;
+
+public class SessaoGinasticaBO {
+	
+	SessaoGinasticaDAO sessaoGinasticaDao;
+
+	// Selecionar
+	public ArrayList<Chatbot> secionarBo() throws SQLException, ClassNotFoundException {
+		sessaoGinasticaDao = new SessaoGinasticaDAO();
+		return (ArrayList<Chatbot>) sessaoGinasticaDao.selecionar();
+	}
+
+	public void inserirBo(Chatbot chatbot) throws ClassNotFoundException, SQLException {
+		SessaoGinasticaDAO chatbotDao = new SessaoGinasticaDAO();
+		chatbotDao.inserir(chatbot);
+	}
+
+	public void atualizarBo(Chatbot chatbot) throws ClassNotFoundException, SQLException {
+		SessaoGinasticaDAO chatbotDao = new SessaoGinasticaDAO();
+		chatbotDao.atualizar(chatbot);
+	}
+
+	public void deletarBo(int id) throws ClassNotFoundException, SQLException {
+		SessaoGinasticaDAO chatbotDao = new SessaoGinasticaDAO();
+		chatbotDao.deletar(id);
+	}
+
+}

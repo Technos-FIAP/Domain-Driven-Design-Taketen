@@ -1,0 +1,34 @@
+package br.com.taketen.bo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.taketen.beans.TipoExercicio;
+import br.com.taketen.dao.TipoExercicioDAO;
+
+public class TipoExercicioBO {
+
+	TipoExercicioDAO tipoExercicioDao;
+
+	// Selecionar
+	public ArrayList<TipoExercicio> secionarBo() throws SQLException, ClassNotFoundException {
+		tipoExercicioDao = new TipoExercicioDAO();
+		return (ArrayList<TipoExercicio>) tipoExercicioDao.selecionar();
+	}
+
+	public void inserirBo(TipoExercicio tipoExercicio) throws ClassNotFoundException, SQLException {
+		TipoExercicioDAO equipeDao = new TipoExercicioDAO();
+		equipeDao.inserir(tipoExercicio);
+	}
+
+	public void atualizarBo(TipoExercicio desafio) throws ClassNotFoundException, SQLException {
+		TipoExercicioDAO equipeDao = new TipoExercicioDAO();
+		equipeDao.atualizar(desafio);
+	}
+
+	public void deletarBo(int id) throws ClassNotFoundException, SQLException {
+		TipoExercicioDAO equipeDao = new TipoExercicioDAO();
+		equipeDao.deletar(id);
+	}
+
+}

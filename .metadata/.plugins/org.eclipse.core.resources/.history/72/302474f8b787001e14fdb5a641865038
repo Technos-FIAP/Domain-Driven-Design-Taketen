@@ -1,0 +1,29 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class DesafioDAO {
+
+	public Connection minhaConexao;
+
+	public DesafioDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Aluno aluno) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?)");
+		stmt.setInt(1, aluno.getRm());
+		stmt.setString(2, aluno.getNome());
+		stmt.setString(3, aluno.getTurma());
+		stmt.setDouble(4, aluno.getNota());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+}

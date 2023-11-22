@@ -1,0 +1,84 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Conquista;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class ConquistaDAO {
+
+	public Connection minhaConexao;
+
+	public ConquistaDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Conquista conquista) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, conquista.getIdConquista());
+		stmt.setInt(2, conquista.getIdSessaoGinastica());
+		stmt.setInt(3, conquista.getIdDesafio());
+		stmt.setInt(4, conquista.getNumeroPontuacaoConquista());
+		stmt.setString(5, conquista.getDescricaoConquista());
+		stmt.setString(6, conquista.getNumeroConquista());
+		stmt.setString(7, conquista.getDescricaoTipoConquista());
+		stmt.setDouble(8, conquista.getNumeroProgressoAtual());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Conquista conquista) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, coluna = ?, coluna = ?, coluna = ?, "
+						+ "coluna = ?, coluna = ? where ID = ?");
+		stmt.setInt(1, conquista.getIdSessaoGinastica());
+		stmt.setInt(2, conquista.getIdDesafio());
+		stmt.setInt(3, conquista.getNumeroPontuacaoConquista());
+		stmt.setString(4, conquista.getDescricaoConquista());
+		stmt.setString(5, conquista.getNumeroConquista());
+		stmt.setString(6, conquista.getDescricaoTipoConquista());
+		stmt.setDouble(7, conquista.getNumeroProgressoAtual());
+		stmt.setInt(8, conquista.getIdConquista());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Conquista> selecionar() throws SQLException {
+		List<Conquista> listaConquista = new ArrayList<Conquista>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Conquista Conquista = new Conquista();
+			Conquista.setIdConquista(rs.getInt(1));
+			Conquista.setIdSessaoGinastica(rs.getInt(2));
+			Conquista.setIdDesafio(rs.getInt(3));
+			Conquista.setTextoSaida(rs.getString(4));
+			Conquista.setDataMensagem(rs.getString(5));
+			Conquista.setDescricaoIntencao(rs.getString(6));
+			listaConquista.add(Conquista);
+		}
+		return listaConquista;
+	}
+}

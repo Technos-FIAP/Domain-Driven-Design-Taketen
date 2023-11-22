@@ -1,0 +1,12 @@
+package br.com.taketen.beans;
+
+public class Profissao {
+
+	private int idProfissao, idUsuario;
+	private String descricaoProfissao, descricaoNivelAtividadeFisica, descricaoEstresseOcupacional;
+	private double numeroFrequenciaPausaAtiva;
+	
+	
+	
+	
+}

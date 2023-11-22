@@ -1,0 +1,8 @@
+package br.com.taketen.resource;
+
+import javax.ws.rs.Path;
+
+@Path("/desafio")
+public class DesafioResource {
+
+}

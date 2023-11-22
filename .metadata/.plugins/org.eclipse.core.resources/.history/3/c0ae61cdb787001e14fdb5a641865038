@@ -1,0 +1,12 @@
+package br.com.taketen.dao;
+
+public class DesafioDAO {
+
+public Connection minhaConexao;
+	
+	public AlunoDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+	
+}

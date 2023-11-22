@@ -1,0 +1,80 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Equipe;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class EquipeDAO {
+
+	public Connection minhaConexao;
+
+	public EquipeDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Equipe equipe) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, equipe.getIdDesafio());
+		stmt.setString(2, equipe.getNumeroDesafio());
+		stmt.setString(3, equipe.getDescricaoDesafio());
+		stmt.setInt(4, equipe.getNumeroNivelDificuldade());
+		stmt.setString(5, equipe.getDataInicio());
+		stmt.setString(6, equipe.getDataFinal());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Equipe desafio) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, " 
+						+ "  coluna = ?, coluna = ?, coluna = ? where ID = ?");
+		stmt.setString(1, desafio.getNumeroDesafio());
+		stmt.setString(2, desafio.getDescricaoDesafio());
+		stmt.setInt(3, desafio.getNumeroNivelDificuldade());
+		stmt.setString(4, desafio.getDataInicio());
+		stmt.setString(5, desafio.getDataFinal());
+		stmt.setInt(6, desafio.getIdDesafio());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Equipe> selecionar() throws SQLException {
+		List<Equipe> listaDesafio = new ArrayList<Equipe>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Equipe desafio = new Equipe();
+			desafio.setIdDesafio(rs.getInt(1));
+			desafio.setNumeroDesafio(rs.getString(2));
+			desafio.setDescricaoDesafio(rs.getString(3));
+			desafio.setNumeroNivelDificuldade(rs.getInt(4));
+			desafio.setDataInicio(rs.getString(5));
+			desafio.setDataFinal(rs.getString(6));
+			listaDesafio.add(desafio);
+		}
+		return listaDesafio;
+	}
+}

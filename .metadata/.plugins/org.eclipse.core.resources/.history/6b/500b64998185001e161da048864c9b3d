@@ -1,0 +1,10 @@
+package br.com.taketen.beans;
+
+public class Desafio {
+
+	private int idDesafio;
+	private String numeroDesafio, descricaoDesafio;
+	private int numeroNivelDificuldade;
+	private String dataInicio, dataFinal;
+	
+}

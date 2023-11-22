@@ -1,0 +1,9 @@
+package br.com.taketen.beans;
+
+public class SessaoGinasticaExercicio {
+
+	private int idSessaoGinasticaExercicio, idExercicio, idSessaoGinastica;
+	
+	
+	
+}

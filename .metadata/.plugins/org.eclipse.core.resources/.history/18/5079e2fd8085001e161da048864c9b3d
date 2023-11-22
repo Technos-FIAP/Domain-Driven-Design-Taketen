@@ -1,0 +1,11 @@
+package br.com.taketen.beans;
+
+public class SessaoGinastica {
+
+	private int idSessaoGinastica, idUsuario;
+	private String dataSessao;
+	private double numeroDuracao;
+	
+	
+	
+}

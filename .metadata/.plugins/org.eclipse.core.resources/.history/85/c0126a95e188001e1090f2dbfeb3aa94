@@ -1,0 +1,81 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Desempenho;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class DesempenhoDAO {
+
+	public Connection minhaConexao;
+
+	public DesempenhoDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Desempenho desempenho) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into T_TKN_DESEMPENHO values (?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, desempenho.getIdDesempenho());
+		stmt.setInt(2, desempenho.getIdSessaoGinastica());
+		stmt.setString(3, desempenho.getDescricaoFeedback());
+		stmt.setInt(4, desempenho.getNumeroIntensidade());
+		stmt.setInt(5, desempenho.getNumeroNivelFlexibilidade());
+		stmt.setInt(6, desempenho.getNumeroRendimentoGeral());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from T_TKN_DESEMPENHO where id_desempenho = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Desempenho desempenho) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update T_TKN_DESEMPENHO set ds_feedback = ?, nr_intensidade = ?, "
+						+ "nr_nivel_flexibilidade = ?, nr_rendimento_geral = ?, "
+						+ "id_sessao_ginastica = ? where id_desempenho = ?");
+		stmt.setInt(1, desempenho.getIdSessaoGinastica());
+		stmt.setString(2, desempenho.getDescricaoFeedback());
+		stmt.setInt(3, desempenho.getNumeroIntensidade());
+		stmt.setInt(4, desempenho.getNumeroNivelFlexibilidade());
+		stmt.setInt(5, desempenho.getNumeroRendimentoGeral());
+		stmt.setInt(6, desempenho.getIdDesempenho());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Desempenho> selecionar() throws SQLException {
+		List<Desempenho> listaDesempenho = new ArrayList<Desempenho>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM T_TKN_DESEMPENHO");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Desempenho desempenho = new Desempenho();
+			desempenho.setIdDesempenho(rs.getInt(1));
+			desempenho.setIdSessaoGinastica(rs.getInt(2));
+			desempenho.setDescricaoFeedback(rs.getString(3));
+			desempenho.setNumeroIntensidade(rs.getInt(4));
+			desempenho.setNumeroNivelFlexibilidade(rs.getInt(5));
+			desempenho.setNumeroRendimentoGeral(rs.getInt(6));
+			listaDesempenho.add(desempenho);
+		}
+		return listaDesempenho;
+	}
+}

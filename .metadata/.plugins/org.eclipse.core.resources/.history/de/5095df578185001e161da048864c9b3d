@@ -1,0 +1,11 @@
+package br.com.taketen.beans;
+
+public class Desempenho {
+
+	private int idDesempenho, idSessaoGinastica;
+	private String descricaoFeedback;
+	private int numeroIntensidade, numeroNivelFlexibilidade, numeroRendimentoGeral;
+	
+	
+	
+}

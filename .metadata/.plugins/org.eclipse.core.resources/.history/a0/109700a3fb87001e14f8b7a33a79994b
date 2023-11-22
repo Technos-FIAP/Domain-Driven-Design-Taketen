@@ -1,0 +1,34 @@
+package br.com.taketen.bo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.taketen.beans.HistoricoSaude;
+import br.com.taketen.dao.HistoricoSaudeDAO;
+
+public class HistoricoSaudeBO {
+	
+	HistoricoSaudeDAO historicoSaudeDao;
+
+	// Selecionar
+	public ArrayList<HistoricoSaude> secionarBo() throws SQLException, ClassNotFoundException {
+		historicoSaudeDao = new HistoricoSaudeDAO();
+		return (ArrayList<HistoricoSaude>) historicoSaudeDao.selecionar();
+	}
+
+	public void inserirBo(HistoricoSaude chatbot) throws ClassNotFoundException, SQLException {
+		HistoricoSaudeDAO chatbotDao = new HistoricoSaudeDAO();
+		chatbotDao.inserir(chatbot);
+	}
+
+	public void atualizarBo(HistoricoSaude chatbot) throws ClassNotFoundException, SQLException {
+		HistoricoSaudeDAO chatbotDao = new HistoricoSaudeDAO();
+		chatbotDao.atualizar(chatbot);
+	}
+
+	public void deletarBo(int id) throws ClassNotFoundException, SQLException {
+		HistoricoSaudeDAO chatbotDao = new HistoricoSaudeDAO();
+		chatbotDao.deletar(id);
+	}
+
+}

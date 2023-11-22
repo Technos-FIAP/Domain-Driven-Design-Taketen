@@ -1,0 +1,81 @@
+package br.com.taketen.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.taketen.beans.Conquista;
+import br.com.taketen.conexoes.ConexaoFactory;
+
+public class ConquistaDAO {
+
+	public Connection minhaConexao;
+
+	public ConquistaDAO() throws ClassNotFoundException, SQLException {
+		super();
+		this.minhaConexao = new ConexaoFactory().conexao();
+	}
+
+	// Insert
+	public String inserir(Conquista conquista) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement(" Insert into TABELA values (?, ?, ?, ?, ?, ?, ?, ?)");
+		stmt.setInt(1, conquista.getIdConquista());
+		stmt.setInt(2, conquista.getIdSessaoGinastica());
+		stmt.setInt(1, conquista.getIdDesafio());
+		stmt.setInt(2, conquista.getNumeroPontuacaoConquista());
+		stmt.setString(3, conquista.getDescricaoConquista());
+		stmt.setString(4, conquista.getNumeroConquista());
+		stmt.setString(5, conquista.getDataMensagem());
+		stmt.setDouble(6, conquista.getDescricaoIntencao());
+		stmt.execute();
+		stmt.close();
+		return "Cadastrado com Sucesso!";
+	}
+
+	// Delete
+	public String deletar(int id) throws SQLException {
+		PreparedStatement stmt = minhaConexao.prepareStatement("Delete from Tabela where ID = ?");
+		stmt.setInt(1, id);
+		stmt.execute();
+		stmt.close();
+		return "Deletado com Sucesso!";
+	}
+
+	// UpDate
+	public String atualizar(Conquista chatbot) throws SQLException {
+		PreparedStatement stmt = minhaConexao
+				.prepareStatement(" Update Table set coluna = ?, coluna = ?, coluna = ?, coluna = ?, coluna = ? where ID = ?");
+		stmt.setInt(1, chatbot.getIdUsuario());
+		stmt.setString(2, chatbot.getTextoEntrada());
+		stmt.setString(3, chatbot.getTextoSaida());
+		stmt.setString(4, chatbot.getDataMensagem());
+		stmt.setString(5, chatbot.getDescricaoIntencao());
+		stmt.setInt(6, chatbot.getIdChatbot());
+		stmt.executeUpdate();
+		stmt.close();
+		return "Atualizado com Sucesso!";
+	}
+
+	// Select
+	public List<Conquista> selecionar() throws SQLException {
+		List<Conquista> listaChatbot = new ArrayList<Conquista>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM table");
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Conquista chatbot = new Conquista();
+			chatbot.setIdChatbot(rs.getInt(1));
+			chatbot.setIdUsuario(rs.getInt(2));
+			chatbot.setTextoEntrada(rs.getString(3));
+			chatbot.setTextoSaida(rs.getString(4));
+			chatbot.setDataMensagem(rs.getString(5));
+			chatbot.setDescricaoIntencao(rs.getString(6));
+			listaChatbot.add(chatbot);
+		}
+		return listaChatbot;
+	}
+}

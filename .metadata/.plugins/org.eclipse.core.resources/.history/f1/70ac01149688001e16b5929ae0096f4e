@@ -1,0 +1,10 @@
+package br.com.taketen.beans;
+
+public class Equipe {
+	
+	private int idEquipe;
+	private String numeroEquipe, dataFormacao;
+	private int numeroTotalMembro, numeroPontuacao;
+	private String descricaoObjetivoEquipe;
+	
+}

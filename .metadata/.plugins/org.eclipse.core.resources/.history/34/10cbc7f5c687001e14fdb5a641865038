@@ -1,0 +1,34 @@
+package br.com.taketen.bo;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.taketen.beans.Equipe;
+import br.com.taketen.dao.EquipeDAO;
+
+public class UsuarioBO {
+
+	EquipeDAO equipeDao;
+
+	// Selecionar
+	public ArrayList<Equipe> secionarBo() throws SQLException, ClassNotFoundException {
+		equipeDao = new EquipeDAO();
+		return (ArrayList<Equipe>) equipeDao.selecionar();
+	}
+
+	public void inserirBo(Equipe desafio) throws ClassNotFoundException, SQLException {
+		EquipeDAO equipeDao = new EquipeDAO();
+		equipeDao.inserir(desafio);
+	}
+
+	public void atualizarBo(Equipe desafio) throws ClassNotFoundException, SQLException {
+		EquipeDAO equipeDao = new EquipeDAO();
+		equipeDao.atualizar(desafio);
+	}
+
+	public void deletarBo(int id) throws ClassNotFoundException, SQLException {
+		EquipeDAO equipeDao = new EquipeDAO();
+		equipeDao.deletar(id);
+	}
+
+}
