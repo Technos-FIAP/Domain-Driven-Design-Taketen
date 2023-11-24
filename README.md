@@ -9,7 +9,7 @@
   <li>RM99513 - Rodrigo Batista Freire</li>
 </ul>
 
-# Repositório destinado a armazenar o projeto Taketen desenvolvido em JAVA
+# Repositório destinado a armazenar o projeto Taketen desenvolvido em JAVA para a entrega da segunda GLOBAL-SOLUTION
 
 ![image](https://github.com/Technos-FIAP/Domain-Driven-Design-Taketen/assets/89154929/438b0859-71bb-4192-bca5-c2c528550b22)
 
