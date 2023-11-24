@@ -65,3 +65,13 @@
 0:0:0:0:0:0:0:1 - - [22/Nov/2023:00:30:09 -0300] "GET /GlobalSolution--Taketen/rest/usuario HTTP/1.1" 500 7711
 127.0.0.1 - - [22/Nov/2023:00:30:17 -0300] "GET / HTTP/1.1" 404 763
 0:0:0:0:0:0:0:1 - - [22/Nov/2023:00:30:23 -0300] "GET /GlobalSolution--Taketen/rest/usuario HTTP/1.1" 200 220
+127.0.0.1 - - [22/Nov/2023:20:36:27 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:36:31 -0300] "GET /GlobalSolution--Taketen/ HTTP/1.1" 404 791
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:36:32 -0300] "GET /favicon.ico HTTP/1.1" 404 774
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:36:49 -0300] "GET /GlobalSolution--Taketen/rest/tipoExercicio HTTP/1.1" 200 145
+127.0.0.1 - - [22/Nov/2023:20:40:54 -0300] "GET / HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:40:57 -0300] "GET /GlobalSolution--Taketen/ HTTP/1.1" 404 791
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:41:10 -0300] "GET /GlobalSolution--Taketen/rest/tipoExercicio HTTP/1.1" 200 133
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:41:15 -0300] "GET /GlobalSolution--Taketen/rest/usuario HTTP/1.1" 200 220
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:41:24 -0300] "GET /GlobalSolution--Taketen/rest/exercicio HTTP/1.1" 200 322
+0:0:0:0:0:0:0:1 - - [22/Nov/2023:20:41:35 -0300] "GET /GlobalSolution--Taketen/rest/chatbot HTTP/1.1" 200 159

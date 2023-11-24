@@ -15,6 +15,11 @@ public class UsuarioBO {
 		usuarioDao = new UsuarioDAO();
 		return (ArrayList<Usuario>) usuarioDao.selecionar();
 	}
+	
+	public ArrayList<Usuario> secionarPorIdBo(int id) throws SQLException, ClassNotFoundException {
+		usuarioDao = new UsuarioDAO();
+		return (ArrayList<Usuario>) usuarioDao.selecionarPorId(id);
+	}
 
 	public void inserirBo(Usuario usuario) throws ClassNotFoundException, SQLException {
 		UsuarioDAO usuarioDao = new UsuarioDAO();

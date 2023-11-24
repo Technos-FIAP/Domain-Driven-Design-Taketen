@@ -87,4 +87,29 @@ public class UsuarioDAO {
 		}
 		return listaUsuario;
 	}
+	
+	public List<Usuario> selecionarPorId(int id) throws SQLException {
+		List<Usuario> listaUsuario = new ArrayList<Usuario>();
+		PreparedStatement stmt = minhaConexao.prepareStatement("SELECT * FROM T_TKN_USUARIO WHERE id_usuario = ?");
+
+		stmt.setInt(1, id);
+		
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Usuario usuario = new Usuario();
+			usuario.setIdUsuario(rs.getInt(1));
+			usuario.setNumeroUsuario(rs.getString(2));
+			usuario.setDescricaoEmail(rs.getString(3));
+			usuario.setDescricaoSenha(rs.getString(4));
+			usuario.setDataNascimento(rs.getString(5));
+			usuario.setNumeroAltura(rs.getDouble(6));
+			usuario.setNumeroPeso(rs.getDouble(7));
+			usuario.setDescricaoSexo(rs.getString(8));
+			usuario.setIdEquipe(rs.getInt(9));
+			listaUsuario.add(usuario);
+		}
+		return listaUsuario;
+	}
+	
 }

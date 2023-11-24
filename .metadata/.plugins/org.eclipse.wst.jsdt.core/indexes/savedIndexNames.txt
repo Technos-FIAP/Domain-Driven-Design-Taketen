@@ -1,7 +1,5 @@
-INDEX VERSION 1.4+C:\Users\MICRO\Desktop\GlobalSolution--Taketen\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2054289773.index
-1513584087.index
-1425363259.index
-1801712309.index
-446667046.index
-982155959.index
+INDEX VERSION 1.4+C:\Users\MICRO\Desktop\Domain-Driven-Design-Taketen\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+172298897.index
+1614345210.index
+3493811404.index
+3175932943.index

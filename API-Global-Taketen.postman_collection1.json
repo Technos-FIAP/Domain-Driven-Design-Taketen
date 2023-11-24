@@ -298,6 +298,15 @@
 						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario/2"
 					},
 					"response": []
+				},
+				{
+					"name": "Lista Usuario Por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/GlobalSolution--Taketen/rest/usuario/1"
+					},
+					"response": []
 				}
 			]
 		},

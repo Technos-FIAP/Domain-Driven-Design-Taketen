@@ -31,6 +31,15 @@ private UsuarioBO usuarioBO = new UsuarioBO();
 		return (ArrayList<Usuario>) usuarioBO.secionarBo();
 	}
 	
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<Usuario> buscarPorId(@PathParam("id") int id) throws SQLException, ClassNotFoundException {
+		return (ArrayList<Usuario>) usuarioBO.secionarPorIdBo(id);
+	}
+	
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastroRs (Usuario usuario, @Context UriInfo uriInfo ) throws ClassNotFoundException, SQLException {
