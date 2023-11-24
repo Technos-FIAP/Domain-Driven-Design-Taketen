@@ -1,8 +1,0 @@
-package br.com.taketen.beans;
-
-public class Chatbot {
-
-	private int idChatbot, idUsuario;
-	private String textoEntrada, textoSaida, dataMensagem, descricaoIntencao;
-	
-}
